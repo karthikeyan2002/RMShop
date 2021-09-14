@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Contact page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="styles/style.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="styles/contact.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+    </script>
+    <script>
+        var application = angular.module('myApp', []);
+
+        application.factory('AdditionFactory', function() {
+            var factory = {};
+            factory.Add = function(a, b) {
+                return a + b;
+            };
+            return factory;
+        });
+
+        application.controller('thisapp', function($scope, AdditionFactory) {
+            $scope.result2 = function() {
+                $scope.results =
+                    AdditionFactory.Add(2, 0)
+            };
+        });
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <nav class="nav navbar-nav navbar-right navswitch">
+            <div class="">
+                <a href="./index.html"><i class="fa fa-home "></i>Home</a>
+                <a href="./About.html "><i class="fa fa-shield "></i>About</a>
+                <a href="./Contact.html "><i class="fa fa-comment "></i>Book Now</a>
+        </nav>
+        </div>
+    </nav>
+    <h3>
+        <center>ADD YOUR DETAILS</center>
+    </h3>
+    <div ng-app="myApp" ng-controller="thisapp">
+        <p>
+            <center>
+                Click the below button to see number of mechanic shop in your area
+            </center>
+        </p>
+        <center>
+            <button ng-click="result2()" class="click-here">click here</button>
+        </center>
+        <center>
+            <p>The no.of mechanic shop in your current location is :- {{results}} </center>
+        <p>
+            <center> The best mechanic shop for your needs will contact you after you fill the form</p>
+        </center>
+    </div>
+
+    <div>
+
+        <br />
+        <div class="container " ng-app="ContactForm ">
+
+            <form name="cf " ng-controller="cfController as cfCtrl " ng-submit="submitForm(cf.$valid) " novalidate>
+                <div class="form-group ">
+                    <label for="name ">Name</label>
+                    <input id="name " type="text " name="name " ng-model="name " required>
+                </div>
+                <div class="form-group ">
+                    <label for="Phone number "> Phone number</label>
+                    <input id="Phone number " type="text " name="Phone number " ng-model="Phone number " required>
+                </div>
+                <div class="form-group ">
+                    <label for="Address ">Address</label>
+                    <textarea id="Address " name="Address " rows="5 " ng-model="Address " required></textarea>
+                    <br><label for="service ">Service Required</label>
+                    <textarea id="service " name="message " rows="4 " ng-model="msg " required></textarea>
+                </div>
+                <input type="submit " value="Send " ng-disabled="cf.$invalid " />
+            </form>
+        </div>
+        <br />
+        <br />
+
+    </div>
+    <script>
+    </script>
+
+</body>
+
+</html>
